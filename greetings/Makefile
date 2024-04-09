@@ -1,8 +1,9 @@
 # Usage:
-# make        # compile all binary
-# make clean  # remove ALL binaries and objects
+# make [compile]  # compile all c to binary
+# make run	      # run all binary
+# make clean      # remove ALL binaries
 
-.PHONY = all run_all clean
+.PHONY = all run clean
 
 compiler = gcc
 source := $(wildcard *.c)
@@ -11,7 +12,7 @@ runables := $(destination:%=%_go)
 parameter = -Wall
 arch = -m64
 
-all: ${destination}
+compile: ${destination}
 
 %: %.o
 	@echo "Checking.."

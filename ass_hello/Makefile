@@ -1,15 +1,17 @@
 # Usage:
-# make [compile] 	# compile anton.c to binary if not up-to-date
+# make [compile] 	# compile hello.asm to binary and link if not up-to-date
 # make run	  		# eventually compile and surely execute
-# make clean  		# remove anton binary
+# make clean  		# remove hello binary + object
 
 .PHONY = compile run clean # diese sind keine Datei
 
-compiler = gcc
-source = anton.c
-destination = anton
-parameter = -Wall
-arch = -m64
+compiler = nasm
+linker = ld
+source = hello.asm
+object = hello.o
+destination = hello
+parameter = ""
+arch = -f elf64
 
 # Befehlsstruktur von Makefile:
 # Ziel: Vorbedingung
@@ -19,11 +21,15 @@ arch = -m64
 compile: ${destination}
 
 ${destination}: ${source} # dabei wird implizit geprüft, ob source neuer als dest ist!
-	${compiler} ${source} -o ${destination} ${parameter} ${arch}
+	${compiler} ${arch} ${source} -o ${object} ${parameter}
+	${linker} -o ${destination} ${object}
 
 run: compile # eine binary ist die Vorbedingung von einer Ausführung
-	./${destination} 50 10000
+	./${destination}
 
 clean:
 	@echo "Cleaning up..."
+	rm -vf ${object}
 	rm -vf ${destination}
+
+
