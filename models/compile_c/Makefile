@@ -1,5 +1,5 @@
 # basic Makefile to compile one c file
-# author typingMathew, inspired by https://opensource.com/article/18/8/what-how-makefile
+# author typingMathew, inspired by Sachin Patil https://opensource.com/article/18/8/what-how-makefile
 CC = gcc
 
 compile: hello.c

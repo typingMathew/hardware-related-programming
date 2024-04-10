@@ -1,5 +1,5 @@
 # advanced Makefile using wildcards to compile all c files
-# author typingMathew, inspired by https://opensource.com/article/18/8/what-how-makefile
+# author typingMathew, inspired by Sachin Patil https://opensource.com/article/18/8/what-how-makefile
 # Usage:
 # make        # compile all c to binary
 # make run	  # run all binary

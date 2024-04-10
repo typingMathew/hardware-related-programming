@@ -1,5 +1,5 @@
 # basic Makefile to generate and clear empty txt
-# author: typingMathew, inspired by https://opensource.com/article/18/8/what-how-makefile
+# author: typingMathew, inspired by Sachin Patil https://opensource.com/article/18/8/what-how-makefile
 .PHONY: all greeting generate clean
 
 all: greeting generate
