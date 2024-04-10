@@ -1,9 +1,11 @@
-# für Erklärungen siehe https://opensource.com/article/18/8/what-how-makefile
+# advanced Makefile using wildcards to compile all c files
+# author typingMathew, inspired by https://opensource.com/article/18/8/what-how-makefile
 # Usage:
-# make        # compile all binary
-# make clean  # remove ALL binaries and objects
+# make        # compile all c to binary
+# make run	  # run all binary
+# make clean  # remove all binaries and objects
 
-.PHONY = all clean
+.PHONY = all run clean
 
 CC = gcc # compiler to use
 
@@ -11,16 +13,21 @@ LINKERFLAG = -lm
 
 SRCS := $(wildcard *.c)
 BINS := $(SRCS:%.c=%)
+RUNS := $(SRCS:%.c=%_go)
 
 all: ${BINS}
 
 %: %.o
-	@echo "Checking.."
 	${CC} ${LINKERFLAG} $< -o $@
 
 %.o: %.c
-	@echo "Creating object.."
 	${CC} -c $<
+
+run:
+	@printf 'Executing Binaries \u2620\n'
+	@for file in ${BINS}; do \
+		./$$file ; \
+	done
 
 clean:
 	@echo "Cleaning up..."

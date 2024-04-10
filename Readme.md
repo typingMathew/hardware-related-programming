@@ -13,9 +13,11 @@ Die Programme unter models sind von der website [opensource.com](https://opensou
 
 ## Aufzeichnungen
 
-mithilfe des file befehls können Metainformationen einer Datei abgefragt werden, bspw.
+mithilfe des 'file' Befehls können Metainformationen einer Datei abgefragt werden, bspw.:
 
 ### Architektur
+
+Heutzutage nutzen Prozessoren eine 64 Bit Architektur. Dies bedeutet das 64 Bit Zahlen und Befehle verarbeitet werden.
 
 ### Linking
 
