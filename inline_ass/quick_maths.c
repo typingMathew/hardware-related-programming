@@ -17,5 +17,13 @@ int main(int argc, char const *argv[])
 
     printf("%i + %i = %i\n", x, y, r);
 
+    asm(
+        "MUL %2"
+        : "=a" (r)
+        : "a" (x), "b" (y)
+    );
+
+    printf("%i * %i = %i\n", x, y, r);
+
     return 0;
 }

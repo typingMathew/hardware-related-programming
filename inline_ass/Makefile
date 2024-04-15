@@ -1,13 +1,13 @@
 # Usage:
-# make [compile] 	# compile adding.c to binary if not up-to-date
+# make [compile] 	# compile quick_maths.c to binary if not up-to-date
 # make run	  		# eventually compile and surely execute
 # make clean  		# remove anton binary
 
 .PHONY = compile run clean # diese sind keine Datei
 
 compiler = gcc
-source = adding.c
-destination = adding
+source = quick_maths.c
+destination = quick_maths.o
 parameter = -Wall
 arch = -m64
 

@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
     setbuf(stdout, 0); // disable stdout buffer
     if (argc != 3)
     {
-        printf("usage: %s numberOfGreetings delay", argv[0]);
+        printf("usage: %s numberOfGreetings delay\n", argv[0]);
         return 1;
     }
 
@@ -29,6 +29,7 @@ void work(int number, int delay)
         printf("Hallo Anton!\t");
         active_wait(delay);
     }
+    putchar('\n');
     
 }
 
