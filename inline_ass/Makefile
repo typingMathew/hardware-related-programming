@@ -8,7 +8,7 @@
 compiler = gcc
 source = quick_maths.c
 destination = quick_maths.o
-parameter = -Wall
+parameter = -Wall -g
 arch = -m64
 
 compile: ${destination}
