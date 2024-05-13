@@ -31,7 +31,7 @@ Vgl. [aaronbloomfield.github.io](https://aaronbloomfield.github.io/pdr/book/x86-
 
 ### Regeln des  Aufrufers
 
-1. Bevor eine Subroutine aufgerufen wird, sollten bestimmte Register gespeichert werden, wenn deren Inhalt erhalten werden soll. Diese sind: R10, R11 und weiter alle Register in die Parameter eingefügt werden. Zum Speichern dieser während des Subroutinenaufrufs müssen sie auf den Stack gepusht werden.
+1. Bevor eine Subroutine aufgerufen wird, sollten bestimmte Register gespeichert werden, wenn deren Inhalt erhalten werden soll. Diese sind: R10, R11 und weiter alle Register in die Parameter eingefügt werden (Siehe 2.). Zum Speichern dieser während des Subroutinenaufrufs müssen sie auf den Stack gepusht werden.
 2. Um Parameter an das aufzurufende Programm zu übergeben, müssen diese, einzeln und in Reihenfolge, in die Register: RDI, RSI, RDX, RCX, R8 bzw. R9 geschrieben werden. Falls es mehr als sechs Parameter gibt, werden die restlichen in invertierter Reihenfolge auf den Stack geschrieben.
 3. Um eine Subroutine aufzurufen wird der CALL Befehl verwendet. Dieser legt die Rückkehraddresse auf den Stack und branched zum Subroutinencode
 4. Nach dem die Subroutine zurückgekehrt ist, müssen eventuelle Zusatzparameter aus 2. vom Stack entfernt werden.

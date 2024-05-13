@@ -4,11 +4,12 @@
 
 Die Programme sortiert nach ihrem Behandlungsdatum:
 
-1. greet_anton
-2. greetings
-3. ass_hello
-4. inline_ass
-5. count_ones
+1. [greet_anton](greet_anton/)
+2. [greetings](greetings/)
+3. [ass_hello](ass_hello/)
+4. [inline_ass](inline_ass/)
+5. [count_ones](count_ones/)
+6. [call_ass_from_c](call_ass_from_c/)
 
 Die Programme unter 'models' sind von der Website [opensource.com](https://opensource.com/article/18/8/what-how-makefile) (Author: Sachin Patil) inspirierte Vorlagen für Makefiles von C Programmen. Erstere sind wiederum Ausgangsbasis für die oben genannten Programme, weswegen dieses Projekt insgesamt der ursprünglichen Lizenz [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) unterstellt ist.
 
@@ -54,6 +55,13 @@ Nutzung des DDD am Beispielprogramm [inline_ass](inline_ass)
 
 ABIs, auch Binärschnittstellen sind Schnittstellen zwischen Programmen auf Maschinenebene. Sie definieren Spezifikationen für den Programmcode, damit dieser die Schnittstelle nutzen kann. Über solche Schnittstellen werden Beispielsweise externe Bibliotheken in Programme eingebunden.  
 Für x86 Prozessoren gibt es eine definierte ABI, die durch folgende [Aufrufkonvention](call_convention.md) definiert ist.
+
+### Zwei Arten von (x86) Assembler Syntaxen
+
+| AT&T (beheimatet bei Unix)                                                                                | Intel (beheimatet bei Windows)                                                                            |
+| :-------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| source (Eingabewert) vor destination (Zieladdresse)                                                         | destination (Zieladdresse) vor source (Eingabewert)                                                         |
+| unterschiedliche Speichergrößen der Parameter werden durch einen Zusatzbuchstaben am Befehl differenziert | unterschiedliche Speichergrößen der Parameter werden implizit über die übergebenen Register differenziert |
 
 ### HA
 
