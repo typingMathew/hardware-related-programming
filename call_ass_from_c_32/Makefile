@@ -18,8 +18,8 @@ c_object = caller.o
 # -Wall aktiviert alle Fehler- und Warnungsmeldungen
 # -g aktivert die Debuginformationen für den Objektcode (bspw. um diesen später mit dem DDD aufrufen zu können)
 c_parameter = -c -Wall -g
-# Die Zielarchitektur für den compilierten Code ist x86 64 Bit
-c_arch = -m64
+# Die Zielarchitektur für den compilierten Code ist x86 32 Bit
+c_arch = -m32
 
 # Als Assemblierer verwende ich den Netwide Assembler
 assembler = nasm
@@ -29,15 +29,15 @@ asm_source = callee.asm
 asm_object = callee.o
 # Folgende Parameter sollen dem NASM übergeben werden:
 asm_parameter = ""
-# -f gibt das Format der Ausgabedatei an (hier 64 Bit ELF)
-asm_arch = -f elf64
+# -f gibt das Format der Ausgabedatei an (hier 32 Bit ELF)
+asm_arch = -f elf32
 
 # Als Linker verwende ich den implizit durch den GCC aufgerufenen LD
 linker = gcc
 # Mein Zieldateiname für das fertige Programm heißt add.out
 final_destination = add.out
-# Die Zielarchitektur für das fertige Programm ist x86 64 Bit
-link_arch = -m64
+# Die Zielarchitektur für das fertige Programm ist x86 32 Bit
+link_arch = -m32
 
 # Dies ist der erste Befehl. Er wird ausgeführt, wenn make ohne Argumente aufgerufen wird
 # link hat als Ziel das fertige Programm
@@ -75,7 +75,7 @@ run: link
 #	Es wird ausgegeben, dass das Programm gestartet wird
 	@echo "Running..."
 #	Das fertige Programm wird gestartet, ihm werden die zwei Zahlen 2 und 3 als Argumente übergeben
-	./${final_destination} 2 3
+	./${final_destination} 2 3 4
 
 
 # Ein Befehl zum Aufräumen. Dabei werden alle erzeugten Dateien gelöscht
