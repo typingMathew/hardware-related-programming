@@ -1,19 +1,28 @@
+; Definieren der Funktion add_ints als globale Funktion (kann von außerhalb aufgerufen werden)
+global add_ints
 
-global called_add_ints
-
+; Definieren des Abschnitts .text (enthält den Code)
 section .text
 
-called_add_ints:
-    ; ∗∗∗ Standard subroutine prologue ∗∗∗
+; Definition der Funktion add_ints
+add_ints:
+    ; ∗∗∗ Standard Subroutinen Prologue ∗∗∗
+    ; Verringern des Stackpointers um 8 Bytes
     sub rsp , 8 
+    ; Schieben des Registers rbx auf dem Stack
     push rbx 
 
     ; ∗∗∗ Subroutine Body ∗∗∗
+    ; Kopieren der Parameter in die Register rax und rbx
     mov rax, rdi 
-    mov rbx, rsi 
+    mov rbx, rsi
+    ; Addieren der Werte in den Registern rax und rbx
     add rax, rbx
     
     ; ∗∗∗ Standard subroutine epilogue ∗∗∗
-    pop rbx ;
+    ; Zurückschreiben des Registers rbx vom Stack
+    pop rbx
+    ; Erhöhen des Stackpointers um 8 Bytes
     add rsp, 8
+    ; Rückkehr zur aufrufenden Funktion
     ret
