@@ -7,9 +7,9 @@ section .text
 ; Definition der Funktion add_ints
 add_ints:
     ; ∗∗∗ Standard Subroutinen Prologue ∗∗∗
-    ; Verringern des Stackpointers um 0 Bytes --> Allokieren von lokalen Variablen
+    ; Verringern des Stackpointers um 0 Bytes --> Allokieren von lokalen Variablen (EBP zeigt auf die Erste)
     sub rsp , 0
-    ; Schieben des Registers rbx auf dem Stack
+    ; Zwischenspeichern des Registers rbx auf dem Stack
     push rbx
 
     ; ∗∗∗ Subroutine Body ∗∗∗
