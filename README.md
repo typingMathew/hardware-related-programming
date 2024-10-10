@@ -17,6 +17,9 @@
     - [Problem](#problem)
     - [Lösungsmöglichkeiten](#lösungsmöglichkeiten)
     - [Praxisbeispiel](#praxisbeispiel)
+  - [Interprozesskommunikation](#interprozesskommunikation)
+    - [Signale](#signale)
+    - [fork - Prozesse klonen](#fork---prozesse-klonen)
 - [Diverse Kommandos und Befehle](#diverse-kommandos-und-befehle)
   - [Linux Kommandos](#linux-kommandos)
   - [Assembler Befehle](#assembler-befehle)
@@ -41,7 +44,6 @@ Semester 5:
 
 1. [hello](hello/)
 2. [active_wait](active_wait/)
-3. [a](a/)
 
 Um die Projekte mit 32 Bit Architektur nutzen zu können, kann es notwendig sein, die Bibliothek *gcc-multilib* mit dem entsprechenden Paketmanager zu installieren.
 Die Programme unter 'models' sind von der Website [opensource.com](https://opensource.com/article/18/8/what-how-makefile) (Author: Sachin Patil)
@@ -156,6 +158,24 @@ Wie lange dauert die parallele Abarbeitung der fünf Prozesse (ohne Overhead)?
 
 Antwort: 1,25 min
 
+### Interprozesskommunikation
+
+#### Signale
+
+Mithilfe des Kommandos `kill` können verschiedene Signal an Prozesse gesendet
+werden. Mit dem Signal SIGKILL (Standard) kann so zum Beispiel ein Prozess
+aufgefordert werden, sich zu beenden, während mit SIGSTOP und anschließendem
+SIGCONT ein Prozess angehalten und wieder gestartet werden kann.
+
+#### fork - Prozesse klonen
+
+Fork ist ein Kommando, das einen bestehenden Prozess vollständig kopiert.
+Dabei gibt der Rückgabewert auskunft dass:
+
+- ich der Elternprozess bin und welche PID mein Kind hat (>0)
+- ich der Kindprozess bin (=0)
+- das kopieren Fehlgeschlagen ist, z.B. aufgrund fehlender Ressourcen (<0)
+
 ## Diverse Kommandos und Befehle
 
 ### Linux Kommandos
@@ -194,4 +214,4 @@ UDP, TCP
 
 ## HA
 
-fork
+semget() semctl() semop()
