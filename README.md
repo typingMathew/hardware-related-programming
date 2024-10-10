@@ -1,8 +1,33 @@
 # Aufzeichnungen und Programme aus Intel (Günther)
 
+## Inhaltsverzeichnis
+
+- [Inhaltsverzeichnis](#inhaltsverzeichnis)
+- [Programme](#programme)
+- [Aufzeichnungen Semester 4](#aufzeichnungen-semester-4)
+  - [Architektur](#architektur)
+  - [Linking](#linking)
+  - [Makefile](#makefile)
+  - [Bedeutung des '=' bei C/asm/Deklaration\_Ausgabeparameter](#bedeutung-des--bei-casmdeklaration_ausgabeparameter)
+  - [Data Display Debugger](#data-display-debugger)
+  - [ABI - Application Binary Interface](#abi---application-binary-interface)
+  - [Zwei Arten von (x86) Assembler Syntaxen](#zwei-arten-von-x86-assembler-syntaxen)
+- [Aufzeichnungen Semester 5](#aufzeichnungen-semester-5)
+  - [Das Philosophenproblem](#das-philosophenproblem)
+    - [Problem](#problem)
+    - [Lösungsmöglichkeiten](#lösungsmöglichkeiten)
+    - [Praxisbeispiel](#praxisbeispiel)
+- [Diverse Kommandos und Befehle](#diverse-kommandos-und-befehle)
+  - [Linux Kommandos](#linux-kommandos)
+  - [Assembler Befehle](#assembler-befehle)
+- [TODO](#todo)
+- [HA](#ha)
+
 ## Programme
 
 Die Programme sortiert nach ihrem Behandlungsdatum:
+
+Semester 4:
 
 1. [greet_anton](greet_anton/)
 2. [greetings](greetings/)
@@ -12,12 +37,18 @@ Die Programme sortiert nach ihrem Behandlungsdatum:
 6. [call_ass_from_c](call_ass_from_c/)
 7. [call_ass_from_c_32](call_ass_from_c_32/)
 
+Semester 5:
+
+1. [hello](hello/)
+2. [active_wait](active_wait/)
+3. [a](a/)
+
 Um die Projekte mit 32 Bit Architektur nutzen zu können, kann es notwendig sein, die Bibliothek *gcc-multilib* mit dem entsprechenden Paketmanager zu installieren.
 Die Programme unter 'models' sind von der Website [opensource.com](https://opensource.com/article/18/8/what-how-makefile) (Author: Sachin Patil)
 inspirierte Vorlagen für Makefiles von C Programmen. Erstere sind wiederum Ausgangsbasis für die oben genannten Programme,
 weswegen dieses Projekt insgesamt der ursprünglichen Lizenz [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) unterstellt ist.
 
-## Aufzeichnungen
+## Aufzeichnungen Semester 4
 
 mithilfe des 'file' Befehls können Metainformationen einer Datei abgefragt werden, bspw.:
 
@@ -79,6 +110,88 @@ Für x86 Prozessoren gibt es eine definierte ABI, die durch folgende [Aufrufkonv
 | source (Eingabewert) vor destination (Zieladdresse)                                                         | destination (Zieladdresse) vor source (Eingabewert)                                                         |
 | unterschiedliche Speichergrößen der Parameter werden durch einen Zusatzbuchstaben am Befehl differenziert | unterschiedliche Speichergrößen der Parameter werden implizit über die übergebenen Register differenziert |
 
-### HA
+## Aufzeichnungen Semester 5
 
-lea, [call](https://c9x.me/x86/html/file_module_x86_id_26.html), [ret](https://c9x.me/x86/html/file_module_x86_id_280.html)
+### Das Philosophenproblem
+
+#### Problem
+
+Fünf Philosophen sitzen an einem Tisch und wollen eine schwierige Sorte
+Spaghetti essen.
+Dafür brauch ein jeder zwingend zwei Gabeln. Zwischen je zwei Philosophen
+liegt je eine Gabel, also insgesamt fünf am Tisch.
+
+Nach Wikipedia
+([de.wikipedia.org](https://de.wikipedia.org/wiki/Philosophenproblem#Problem)):
+
+    Die Philosophen sitzen am Tisch und denken über philosophische Probleme
+    nach. Wenn einer hungrig wird, greift er zuerst die Gabel links von seinem
+    Teller, dann die auf der rechten Seite und beginnt zu essen. Wenn er satt
+    ist, legt er die Gabeln wieder zurück und beginnt wieder zu denken. Sollte
+    eine Gabel nicht an ihrem Platz liegen, wenn der Philosoph sie aufnehmen
+    möchte, so wartet er, bis die Gabel wieder verfügbar ist.
+
+    Solange nur einzelne Philosophen hungrig sind, funktioniert dieses
+    Verfahren. Es kann aber passieren, dass sich alle fünf Philosophen
+    gleichzeitig entschließen, zu essen. Sie ergreifen also alle gleichzeitig
+    ihre linke Gabel und nehmen damit dem jeweils links von ihnen sitzenden
+    Kollegen dessen rechte Gabel weg. Nun warten alle fünf darauf, dass die
+    rechte Gabel wieder auftaucht. Das passiert aber nicht, da keiner der fünf
+    seine linke Gabel zurücklegt. Die Philosophen verhungern.
+
+#### Lösungsmöglichkeiten
+
+- gegenseitige Absprache
+- Priorisierung
+- Nummerierung und intelligente Nutzung der Ressourcen
+
+#### Praxisbeispiel
+
+- Es gibt 5 Prozesse: A, B, C, D, E.
+- Es gibt 4 CPU-Kerne.
+- Ein Prozess dauert 1 min.
+- Ein Prozess kann unterbrochen werden.
+
+Wie lange dauert die parallele Abarbeitung der fünf Prozesse (ohne Overhead)?
+
+Antwort: 1,25 min
+
+## Diverse Kommandos und Befehle
+
+### Linux Kommandos
+
+- cd
+- ls
+- gcc
+- htop
+- mcedit
+- ps
+- cp
+- chmod / chown
+- kate
+- nano
+- time
+- sed
+- bash
+- make
+- sudo
+- vi
+- cat
+- ssh
+- kill
+- lolcat
+
+### Assembler Befehle
+
+- [call](https://c9x.me/x86/html/file_module_x86_id_26.html)
+- [ret](https://c9x.me/x86/html/file_module_x86_id_280.html)
+- lea
+
+## TODO
+
+Fork, Pipe, Select, Semaphor, Deadlock
+UDP, TCP
+
+## HA
+
+fork
