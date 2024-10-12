@@ -215,3 +215,10 @@ UDP, TCP
 ## HA
 
 semget() semctl() semop()
+<<<<<<< HEAD
+
+Übung in der zwei Prozesse (fork) mit zufälligem zeitlichen Abstand V (Vater) bzw. s (Sohn) auf stdout schreiben.
+Anschließend synchronisieren mit Semaphore, sodass abwechselnd je zwei Zeichen (V/ s) auf stdout erscheinen.
+Semaphore sollen abschaltbar gemacht sein.
+=======
+>>>>>>> de55fb7 (lesson of 10.10.24)
