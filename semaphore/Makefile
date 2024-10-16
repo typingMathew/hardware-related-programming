@@ -10,6 +10,7 @@ source = schreiber.c
 destination = schreiber.o
 parameter = -Wall -g
 arch = -m64
+ARG_1 = 2
 
 compile: ${destination}
 
@@ -17,7 +18,7 @@ ${destination}: ${source} # dabei wird implizit geprüft, ob source neuer als de
 	${compiler} ${source} -o ${destination} ${parameter} ${arch}
 
 run: compile # eine binary ist die Vorbedingung von einer Ausführung
-	./${destination}
+	./${destination} ${ARG_1}
 
 clean:
 	@echo "Cleaning up..."

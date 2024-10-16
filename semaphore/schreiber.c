@@ -12,6 +12,7 @@ struct sembuf p = { 0, -1, SEM_UNDO};
 // Inkrementiert die Semaphore
 struct sembuf v = { 0, +1, SEM_UNDO};
 
+// Funktion zum aktiven Warten
 void active_wait(size_t delay);
 
 // Erzeugt eine neue Semaphore und initialisiert ihren Wert auf init
@@ -20,9 +21,24 @@ int create_new_semaphor(int init);
 
 int main(int argc, char const *argv[])
 {
+    // Fehlerprüfung
+    if (argc != 2)
+    {
+        printf("usage: %s char_count\n", argv[0]);
+        exit(10);
+    }
+    // Anzahl der Zeichen, die ausgegeben werden sollen
+    int char_count = atoi(argv[1]);
+    
     // Initialisierung
+    // Zufällige Zahlen generieren, indem der Seed auf die aktuelle Zeit gesetzt wird
     srand(time(NULL));
+    // Deklaration der Variablen
+    // c: Zeichen, das ausgegeben wird
     char c;
+    // ret_val: Rückgabewert der Externen-Operationen
+    // sem_write: Identifikator der Semaphore zum Schreiben auf Standard-Out
+    // sem_block: Identifikator der Semaphore zum Ent-Blockieren des anderen Prozesses
     int ret_val, sem_write, sem_block;
     // Identifikator der Semaphore zum Schreiben auf Standard-Out
     const int sem_write_dad = create_new_semaphor(1);
@@ -63,11 +79,16 @@ int main(int argc, char const *argv[])
         // Fehlerbehandlung
         if(ret_val < 0)
         {
-            perror("semop p"); exit(13);
+            perror("semop p");
+            exit(13);
         }
 
-        putchar(c);
-        putchar(c);
+        // Ausgabe der Zeichen
+        for (size_t i = 0; i < char_count; i++)
+        {
+            putchar(c);
+        }
+        // Leeren des Buffers --> direkte Ausgabe
         fflush(stdout);
         
         // Freigeben der Semaphore für den anderen Prozess
@@ -75,13 +96,15 @@ int main(int argc, char const *argv[])
         // Fehlerbehandlung
         if(ret_val < 0)
         {
-            perror("semop p"); exit(13);
+            perror("semop p");
+            exit(13);
         }
         
     }
+    // Warten auf den Sohn
     wait(NULL);
     putchar('\n');
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
 void active_wait(size_t delay)
@@ -100,16 +123,22 @@ int create_new_semaphor(int init)
 {
     int ret_val, sem_id;
     // Erstellen der Semaphore
-    // Argument 2 bestimmt die Anzahl an Semaphoren (2)
-    // Argument 3 bestimmt den Modus: 0666 steht für die Berechtigungen 
-    //      (User-Group-All) --> (RW--)
-    //      Außerdem wird durch IPC_CREAT festgelegt, dass eine neue Semaphore erstellt werden soll, falls noch keine vorhanden ist
-    ret_val = semget(0, 1, 0600 | IPC_CREAT);
+    // Argument 1 bestimmt den Key (0)
+    key_t key = 0;
+    // Argument 2 bestimmt die Anzahl an Semaphoren (1)
+    int nsems = 1;
+    // Argument 3 bestimmt den Modus: 
+    //   -  0600 steht für die Berechtigungen (User-Group-All) --> (RW--)
+    //   -  Außerdem wird durch IPC_CREAT festgelegt, dass eine neue Semaphore erstellt werden soll, 
+    //      falls noch keine mit dem Key existiert
+    int flags = 0600 | IPC_CREAT;
+    ret_val = semget(key, nsems, flags);
     // Fehlerbehandlung
     if(ret_val < 0)
     {
         perror("semget fehlgeschlagen"); exit(11);
     }
+    // Speichern des Identifikators der Semaphore
     sem_id = ret_val;
 
     // Initialisieren der Semaphore mit dem Wert init

@@ -44,6 +44,7 @@ Semester 5:
 
 1. [hello](hello/)
 2. [active_wait](active_wait/)
+3. [semaphore](semaphore/)
 
 Um die Projekte mit 32 Bit Architektur nutzen zu können, kann es notwendig sein, die Bibliothek *gcc-multilib* mit dem entsprechenden Paketmanager zu installieren.
 Die Programme unter 'models' sind von der Website [opensource.com](https://opensource.com/article/18/8/what-how-makefile) (Author: Sachin Patil)
@@ -166,6 +167,8 @@ Mithilfe des Kommandos `kill` können verschiedene Signal an Prozesse gesendet
 werden. Mit dem Signal SIGKILL (Standard) kann so zum Beispiel ein Prozess
 aufgefordert werden, sich zu beenden, während mit SIGSTOP und anschließendem
 SIGCONT ein Prozess angehalten und wieder gestartet werden kann.
+Diese letzten Beiden können von einem Scheduler genutzt werden, um Prozesse
+unterbrechen und später weiterführen zu können.
 
 #### fork - Prozesse klonen
 
@@ -200,6 +203,8 @@ Dabei gibt der Rückgabewert auskunft dass:
 - ssh
 - kill
 - lolcat
+- touch
+- file
 
 ### Assembler Befehle
 
@@ -215,10 +220,3 @@ UDP, TCP
 ## HA
 
 semget() semctl() semop()
-<<<<<<< HEAD
-
-Übung in der zwei Prozesse (fork) mit zufälligem zeitlichen Abstand V (Vater) bzw. s (Sohn) auf stdout schreiben.
-Anschließend synchronisieren mit Semaphore, sodass abwechselnd je zwei Zeichen (V/ s) auf stdout erscheinen.
-Semaphore sollen abschaltbar gemacht sein.
-=======
->>>>>>> de55fb7 (lesson of 10.10.24)
