@@ -20,8 +20,10 @@
   - [Interprozesskommunikation](#interprozesskommunikation)
     - [Signale](#signale)
     - [fork - Prozesse klonen](#fork---prozesse-klonen)
+    - [Extra](#extra)
 - [Diverse Kommandos und Befehle](#diverse-kommandos-und-befehle)
   - [Linux Kommandos](#linux-kommandos)
+  - [Linux Kommandozeilenoperatoren](#linux-kommandozeilenoperatoren)
   - [Assembler Befehle](#assembler-befehle)
 - [TODO](#todo)
 - [HA](#ha)
@@ -179,6 +181,11 @@ Dabei gibt der Rückgabewert auskunft dass:
 - ich der Kindprozess bin (=0)
 - das kopieren Fehlgeschlagen ist, z.B. aufgrund fehlender Ressourcen (<0)
 
+#### Extra
+
+- Semaphore
+- Socket + TCP verbindung
+
 ## Diverse Kommandos und Befehle
 
 ### Linux Kommandos
@@ -205,6 +212,14 @@ Dabei gibt der Rückgabewert auskunft dass:
 - lolcat
 - touch
 - file
+- pwd
+
+### Linux Kommandozeilenoperatoren
+
+- |
+- >
+- <
+- &
 
 ### Assembler Befehle
 
@@ -214,7 +229,7 @@ Dabei gibt der Rückgabewert auskunft dass:
 
 ## TODO
 
-Fork, Pipe, Select, Semaphor, Deadlock
+Pipe, Select, Deadlock
 UDP, TCP
 
 ## HA
